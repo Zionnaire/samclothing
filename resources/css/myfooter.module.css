@@ -1,0 +1,149 @@
+/* FooterSect.module.css */
+
+/* Base styles for mobile devices */
+.FooterSect {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  background-color: #000;
+}
+
+.FooterSectInner {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.FooterSectContent {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  color: #fff;
+}
+
+.FooterSectTitle {
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.FooterSectUl {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  gap: 5px;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.FooterSectLi {
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 400;
+  list-style: none;
+}
+
+.FooterSectInput {
+  width: 100%;
+  padding: 3px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.FooterSectInput::placeholder {
+ font-size: 10px;
+
+}
+
+.FooterSectInputIcon {
+  position: absolute;
+  right: 3px;
+  color: #000;
+  bottom: 5px;
+}
+
+.links {
+  text-decoration: none;
+  font-style: none;
+  color: #fff;
+}
+
+.bind {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconBind {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (min-width: 576px) {
+  /* Styles for small screens (e.g., smartphones) */
+  .FooterSectContent {
+    display: flex;
+    font-size: 18px;
+    gap: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Styles for medium screens (e.g., tablets) */
+  .FooterSectInner {
+    width: 80%;
+  }
+
+  .FooterSectContent {
+    font-size: 16px;
+    gap: 15px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  /* Styles for large screens (e.g., laptops) */
+  .FooterSect {
+    padding: 20px 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /* Styles for extra-large screens (e.g., desktops) */
+  .FooterSectContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .FooterSectContent {
+    font-size: 14px;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Styles for small screens (e.g., smartphones) */
+  .FooterSectContent {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    gap: 20px;
+  }
+}
