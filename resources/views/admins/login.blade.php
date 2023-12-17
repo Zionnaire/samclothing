@@ -8,7 +8,7 @@
         <p class="mb-4">Login to as an admin to post designs</p>
     </header>
 
-    <form method="POST" action="{{route('admins.dashboard')}}" class="mt-4">
+    <form method="POST" action="/auth/admins/login" class="mt-4">
         @csrf
         <div class="mb-6">
             <label for="email" class="inline-block text-lg mb-2"

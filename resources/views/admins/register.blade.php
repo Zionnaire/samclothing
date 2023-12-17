@@ -8,9 +8,8 @@
         <p class="mb-4">Create an account as Admin to post designs</p>
     </header>
 
-    <form method="POST" action="/admins/login" class="mt-4">
+    <form method="POST" action="/admins/register" class="mt-4">
         @csrf
-        @method('POST')
         <div class="mb-6">
             <label for="name" class="inline-block text-lg mb-2">
                 Name

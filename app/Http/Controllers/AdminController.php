@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -17,22 +18,41 @@ class AdminController extends Controller
 
 
       // Authenticate the admin_user
-      public function AdminAuthenticate(Request $request)
+      public function Adminauthenticate(Request $request)
       {
-          // Validate the form data
-          $credentials = $request->validate([
-              'email' => ['required', 'email'],
-              'password' => ['required', 'min:6'],
-          ]);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+        // dd(bcrypt($request->password));
+        
+// Attempt to log in the admin
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
+            // Authentication passed, redirect to admin dashboard
+            return redirect()->intended('/admins/dashboard');
+        }
+
+        // Authentication failed, redirect back with errors
+        return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+    }
+
+
+
+
+    //       // Validate the form data
+    //       $credentials = $request->validate([
+    //           'email' => ['required', 'email'],
+    //           'password' => ['required', 'min:6'],
+    //       ]);
       
-        //   $admin = Admin::where('email', $credentials['email'])->first();
+    //     //   $admin = Admin::where('email', $credentials['email'])->first();
   
-         if(auth()->guard('admin')->attempt($credentials)){
-          return redirect('/admins/dashboard');
-          }else{
-              return redirect('/admins/login')->with('message', 'Invalid credentials!');
-          }
-      }    
+    //      if(auth()->guard('admin')->attempt($credentials)){
+    //       return redirect('/admins/dashboard');
+    //       }else{
+    //           return redirect('/admins/login')->with('message', 'Invalid credentials!');
+    //       }
+    //   }    
 
     //Show register/create form
     public function create(){

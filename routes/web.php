@@ -32,25 +32,28 @@ Route::get('/contact', [ContactController::class, 'contact'])->name('pages.conta
 Route::post('/contact', [ContactController::class, 'sendMessage'])->name('pages.contact.send');
 
 // Admin auth routes 
-Route::middleware('guest:admin')->group(function () {
+// Route::middleware('guest:admin')->group(function () {
 
-    Route::get('/admins/register', [AdminController::class,'create'])->name('admins.register');
+    // Route::get('/admins/register', [AdminController::class,'create'])->name('admins.register');
     
-    Route::get('/admins/login', [AdminController::class, 'login'])->name('admins.login');
+    // Route::get('/admins/login', [AdminController::class, 'login'])->name('admins.login');
   
-  });
-  
-  Route::middleware('adminauth:admin')->group(function () {
-  
+  // });
+  // Login routes
+  Route::post('/auth/admins/login', [AdminController::class,'Adminauthenticate'])->name('admins.auth');
+  Route::post('/users/login', [UsersController::class, 'authenticate'])->name('users.dashboard');
+
+  Route::middleware('auth:admin')->group(function () {
+      
+    Route::get('/admins/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
     Route::post('/admins/logout', [AdminController::class,'logout'])->name('admins.logout');
-    
-    Route::get('/admins/dashboard', [AdminController::class,'dashboard']);
+
   
   });
 
 
 // Auth routes
-Route::middleware('guest')->group(function () {
+// Route::middleware('guest')->group(function () {
 
   Route::get('/register', [UsersController::class,'create']);
   
@@ -60,7 +63,7 @@ Route::middleware('guest')->group(function () {
 
   Route::get('/admins/login', [AdminController::class, 'login'])->name('admins.login');
   
-});
+// });
 
 Route::middleware('auth')->group(function () {
 
@@ -75,7 +78,4 @@ Route::post('/admins/register', [AdminController::class, 'store'])->name('admins
 
 Route::post('/users', [UsersController::class,'store']);
 
-// Login routes
-Route::post('/admins/login', [AdminController::class,'AdminAuthenticate'])->name('admins.dashboard');
-Route::post('/users/login', [UsersController::class, 'authenticate'])->name('users.dashboard');
 
