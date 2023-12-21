@@ -1,78 +1,28 @@
-{{--Create an admin dashboard --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-        }
+<!-- User Dashboard -->
+<div class="min-h-screen flex flex-col">
+    <!-- Navbar/Header -->
+    <header class="bg-gray-800 text-white py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center">
+                <img src="user-logo.png" alt="User Logo" class="h-8 w-auto mr-2">
+                <span class="text-lg font-semibold">User Dashboard</span>
+            </div>
+            <div class="flex items-center">
+                <a href="#" class="text-gray-300 hover:text-white">Home</a>
+                <a href="#" class="ml-4 text-gray-300 hover:text-white">Profile</a>
+                <a href="#" class="ml-4 text-gray-300 hover:text-white">Settings</a>
+                <button class="ml-4 text-gray-300 hover:text-white">Logout</button>
+            </div>
+        </div>
+    </header>
 
-        #menu {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 250px;
-            background-color: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-out;
-        }
+    <!-- Main Content -->
+    <main class="flex-grow p-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Your dashboard content goes here -->
+            <h1 class="text-2xl font-semibold mb-4">Welcome, [Username]!</h1>
+            <!-- Add more sections, cards, or widgets based on your application's features -->
+        </div>
+    </main>
 
-        #menu.active {
-            transform: translateX(0);
-        }
-
-        #menuToggle {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        #menuToggle div {
-            width: 30px;
-            height: 3px;
-            background-color: #333;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        #menuToggle.active div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        #menuToggle.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        #menuToggle.active div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    </style>
-</head>
-<body>
-    <x-layout>
-
-        @include('partials.dashboardcard')
-</x-layout>
-
-
-
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById('menu');
-        const menuToggle = document.getElementById('menuToggle');
-        
-        menu.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    }
-</script>
-
-</body>
-</html>
+</div>

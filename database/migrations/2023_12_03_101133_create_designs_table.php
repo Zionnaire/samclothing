@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('designs', function (Blueprint $table) {
             $table->id();
-            //  $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('admin_id')->references('id')->on('admins');
             $table->string('title');
-            $table->string('price with materials');
+            $table->string('price');
             $table->string('style');
             $table->string('tags');
-            $table->string('gender');
+            $table->string('color');
+            $table->string('category');
+            $table->string('material');
             $table->longText('description');
             $table->string('image')->nullable();
             $table->timestamps();

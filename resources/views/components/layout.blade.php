@@ -48,6 +48,15 @@
                 },
             };
         </script>
+        <!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1f1f9phINdQ9G3b5Pw2/fi9nJK9Xk8n1gxg=" crossorigin="anonymous"></script>
+
+<!-- Slick Carousel CSS CDN -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+
+<!-- Slick Carousel JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
         <title>Sam's Clothing</title>
         @viteReactRefresh
         @vite('resources/js/app.js')
@@ -57,14 +66,13 @@
     </head>
                 {{-- View Starts Here --}}
 
-    <body class="mb-48">
-        <div id="app">
-        <x-flash-message />
+    <body>
+        <x-flash-message/>
         <nav class="flex justify-between items-center mb-2 shadow-lg bg-btnBg px-4 py-1 sticky top-0 z-50">
             <a href="/" class="flex gap-2 items-end px-4 py-2 text-lg font-bold text-btnBg rounded-lg hover:text-hover">
                 <img class="w-[30%] shadow-sm" src="{{asset('images/logo.png')}}" alt="" class="logo"
             /></a>
-            <ul class="flex gap-4 space-x-6 mr-6 text-lg">
+            <ul class="flex gap-3 space-x-6 mr-6 text-lg">
                 <li>
                     <a href="/" class="hover:text-hover text-white flex gap-1 items-center"><i class="fa-solid fa-home"></i> Home</a>
                 </li>
@@ -121,12 +129,7 @@
     <main>
    {{ $slot }}
     </main>
-    <div class="bg-btnBg" id="footer">
-    </div>
-    {{-- <x-footer /> --}}
-{{-- <footer-sect/> --}}
-</div>
-<script src="{{ mix('js/app.js') }}"></script>
-
+{{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+<x-footer/>
 </body>
 </html>

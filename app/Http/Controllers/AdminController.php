@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Design;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -13,10 +14,7 @@ class AdminController extends Controller
 
 // Here is a reference snippet of code from app/Http/Controllers/AdminsController.php:
 
-
 {
-
-
       // Authenticate the admin_user
       public function Adminauthenticate(Request $request)
       {
@@ -34,25 +32,7 @@ class AdminController extends Controller
 
         // Authentication failed, redirect back with errors
         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
-    }
-
-
-
-
-    //       // Validate the form data
-    //       $credentials = $request->validate([
-    //           'email' => ['required', 'email'],
-    //           'password' => ['required', 'min:6'],
-    //       ]);
-      
-    //     //   $admin = Admin::where('email', $credentials['email'])->first();
-  
-    //      if(auth()->guard('admin')->attempt($credentials)){
-    //       return redirect('/admins/dashboard');
-    //       }else{
-    //           return redirect('/admins/login')->with('message', 'Invalid credentials!');
-    //       }
-    //   }    
+    }  
 
     //Show register/create form
     public function create(){
@@ -93,18 +73,12 @@ class AdminController extends Controller
        return view('admins.login');
        }
 
-  
-
-     //Admin dashboard
-     public function adminDashboard(){
-        return view('admins.dashboard');
-    }
-
+      
+       
     //Show admin Dashboard
     public function dashboard(){
         return view('admins.dashboard');
     }
-
 
 }
 

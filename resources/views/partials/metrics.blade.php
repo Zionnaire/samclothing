@@ -1,4 +1,4 @@
-<div class="row g-4 mb-4 py-3 flex justify-between">
+<div class="row gap-4 mb-4 py-3 flex justify-between">
 
 <div class="col-sm-6 wow fadeIn flex justify-between" data-wow-delay="0.1s">
     <div class="flex justify-between items-center">

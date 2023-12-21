@@ -20,18 +20,22 @@ class HomeController extends Controller
        ]);
    }
 
+
+   //Show the create design page
+   public function create(){
+    return view('pages.createDesign');
+   }
+
    //Store the design
    public function store(Request $request){
     // Validate the request
        $attributes = request()->validate([
            'image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'title' =>'required',
-           'price' =>'required',
-          'style' =>'required',
-           'description' =>'required',
-           'designer_name' =>'required',
-           'designer_email' =>'required',
-           'email' => ['required','email', Rule::unique('designs', 'email')],
+           'title' =>['required', 'min:3'],
+           'description' => ['required','min:10'],
+           'price' => ['required', 'numeric'],
+           'category' => ['required'],
+           'tags' => ['required'],
        ]);
 if($request->hasFile('image')){
     $attributes['image'] = $request->file('image')->store('images', 'public');;
@@ -42,7 +46,7 @@ if($request->hasFile('image')){
     // Create the design and save it to the database
     Design::create($attributes);
     // Redirect to the home page
-    return redirect('/home')->with('message', 'Design created successfully');     
+    return redirect('/')->with('message', 'Design created successfully');     
 }
 
 //Show the edit form
@@ -56,18 +60,16 @@ public function edit(Design $design){
 public function update(Request $request, Design $design){
     //Let make sure the user is the is an authorized user, the user must be admin
 if($design->user_id != auth()->id()){
-    return redirect('/home')->with('message', 'Unauthorized page');
+    return redirect('/')->with('message', 'Unauthorized page');
 }
     // Validate the request
     $attributes = request()->validate([
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'title' =>'required',
-        'price' =>'required',
-       'style' =>'required',
-        'description' =>'required',
-        'designer_name' =>'required',
-        'designer_email' =>'required',
-        'email' => ['required','email', Rule::unique('designs', 'email')],
+        'title' =>['required', 'min:3'],
+        'description' => ['required','min:10'],
+        'price' => ['required', 'numeric'],
+        'category' => ['required'],
+        'tags' => ['required'],
     ]);
     if($request->hasFile('image')){
         $attributes['image'] = $request->file('image')->store('images', 'public');
@@ -75,7 +77,7 @@ if($design->user_id != auth()->id()){
     // Update the design and save it to the database
     $design->update($attributes);
     // Redirect to the home page
-    return redirect('/home')->with('message', 'Design updated successfully');
+    return redirect('/')->with('message', 'Design updated successfully');
 }
 
 
@@ -83,12 +85,12 @@ if($design->user_id != auth()->id()){
 public function destroy(Design $design){
     //Let make sure the user is the is an authorized user, the user must be admin
 if($design->user_id != auth()->id()){
-    return redirect('/home')->with('message', 'Unauthorized page');
+    return redirect('/')->with('message', 'Unauthorized page');
 }
     // Delete the design and save it to the database
     $design->delete();
     // Redirect to the home page
-    return redirect('/home')->with('message', 'Design deleted successfully');
+    return redirect('/')->with('message', 'Design deleted successfully');
 }
 
 //

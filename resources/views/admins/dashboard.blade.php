@@ -12,15 +12,19 @@
         }
 
         #menu {
-            display: none;
+            display: flex;
+            flex-direction: column;
             position: fixed;
+            gap: 10px;
+            padding: 20px;
             left: 0;
-            top: 0;
+            top: 100px;
             height: 100%;
             width: 250px;
             background-color: #fff;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-out;
+            border: #333 1px solid;
         }
 
         #menu.active {
@@ -58,19 +62,24 @@
 </head>
 <body>
     <x-layout>
-
-<div id="menu">
-         <h1>Welcome to the admin dashboard</h1>
-        <h2>Admin Dashboard</h2>
-        <ul class="list-unstyled list-group mb-3 list-group-flush flex flex-col gap-4 justify-center items-center bg-white hover:bg-black text-black hover:text-white border-2 border-gray-200 rounded-lg w-[30%]">
-            <li class="text-[18px] hover:text-hover"><a href="/collections">All Collections</a></li>
-            <li class="text-[18px] hover:text-hover"><a href="/user">All Users</a></li>
-            <li class="text-[18px] hover:text-hover"><a href="/tags">All Tags</a></li>
-            <li class="text-[18px] hover:text-hover"><a href="/create">Upload Designs</a></li>
-        </ul>
+<div class="container" style="flex:1 0 auto ;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;">
+    <h1>Welcome to the admin dashboard</h1>
+    <p>Here you can manage all of the collections, users, and tags</p>
 </div>
+
+
 </x-layout>
 
+<div id="menu" >
+    <h2 class="text-[18px] hover:text-hover">Admin Dashboard</h2>
+
+        <ul class="list-unstyled list-group-flush flex flex-col gap-5 justify-center bg-white text-black hover:text-bgBtn">
+            <li class="text-[17px] py-2 hover:text-hover text-center border-2 rounded-2xl hover:border-2 bg-btn shadow-lg"><a href="/admins/collections">All Collections</a></li>
+            <li class="text-[17px] py-2 hover:text-hover text-center border-2 rounded-2xl hover:border-2 bg-btn shadow-lg"><a href="/user">All Users</a></li>
+            <li class="text-[17px] py-2 hover:text-hover text-center border-2 rounded-2xl hover:border-2 bg-btn shadow-lg"><a href="/tags">All Tags</a></li>
+            <li class="text-[17px] py-2 hover:text-hover text-center border-2 rounded-2xl hover:border-2 bg-btn shadow-lg"><a href="/admins/createDesign">Upload Designs</a></li>
+        </ul>
+</div>
 
 <div id="menuToggle" onclick="toggleMenu()">
     <div></div>
@@ -87,6 +96,5 @@
         menuToggle.classList.toggle('active');
     }
 </script>
-
 </body>
 </html>

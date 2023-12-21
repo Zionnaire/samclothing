@@ -16,6 +16,10 @@ class AdminAuthenticate
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+
+     /**
+     * Get the path the Admin should be redirected to when they are not authenticated.
+     */
     public function handle(Request $request, Closure $next)
     {
         if (Auth::guard('admin')->user()) {

@@ -22,11 +22,6 @@ public function dashboard(){
     return view('users.dashboard');
 }
 
-//Show Admin Dashboard
-public function adminDashboard(){
-    return view('admin.dashboard');
-}
-
     //Store a new user
     public function store(Request $request){
         //Validate the form data
@@ -54,6 +49,7 @@ return redirect('/users/dashboard')->with('message', 'User created successfully!
         return redirect('/')->with('message', 'User logged out successfully!');
     }
 
+
     //Show Login Form
     public function login(){
         return view('users.login');
@@ -68,16 +64,6 @@ return redirect('/users/dashboard')->with('message', 'User created successfully!
         ]);
         $user = User::where('email', $credentials['email'])->first();
 
-       // Check if admin
-//   if($admin) {
-//     // Authenticate against admin model
-//     if(auth()->guard('admin')->attempt($credentials)) {
-//       // Login successful
-//       return redirect()->intended('/admins/dashboard'); 
-//     }
-    
-//   }
-  // Otherwise check if regular user
 if($user) {
     // Authenticate against user model
     if(auth()->guard('web')->attempt($credentials)) {
@@ -92,6 +78,11 @@ if($user) {
             ])->onlyInput('email');
         }
       
+}
+
+//Show User Profile
+public function profile(){
+    return view('users.profile');
 }
 
  //Show Relationships between User and Designs
